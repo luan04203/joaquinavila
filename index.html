@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encabezado Profesional</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Encabezado Secundario con Redes Sociales y Teléfono -->
+    <header class="secondary-header">
+        <div class="social-icons">
+            <a href="https://www.facebook.com/tuPerfil" target="_blank" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.twitter.com/tuPerfil" target="_blank" title="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/tuPerfil" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        
+        <div class="phone-number">
+            <a href="tel:+1234567890">+525618780527</a>
+        </div>
+    </header>
+
+    <!-- Encabezado Principal con Logo y Menú -->
+    <header class="main-header">
+        <div class="logo">
+            <a href="index.html"><img src="ROPA/image1.png" alt="Logo"></a>
+        </div>
+        <nav class="nav-menu">
+            <a href="tienda.html">Tienda</a>
+            <a href="login.html">Iniciar sesión</a>
+            <a href="cesta.html"><i class="fas fa-shopping-cart"></i></a>
+            <!-- Reemplazo del botón de contacto -->
+            <button class="btn-31">
+                <span class="text-container">
+                    <span class="text">Contacto</span>
+                </span>
+            </button>
+        </nav>
+        <!-- Nuevo Botón de Menú para Dispositivos Pequeños -->
+        <label class="hamburger">
+            <input type="checkbox">
+            <svg viewBox="0 0 32 32">
+                <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                <path class="line" d="M7 16 27 16"></path>
+            </svg>
+        </label>
+    </header>
+
+    <!-- Menú Desplegable para Dispositivos Pequeños -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="tienda.html">Tienda</a>
+        <a href="login.html">Iniciar sesión</a>
+        <a href="cesta.html"><i class="fas fa-shopping-cart"></i> Cesta</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+
+    <!-- Overlay para cerrar el menú cuando se hace clic fuera -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Contenido Principal -->
+    <div class="background">
+        <div class="overlay"></div> <!-- Elemento para la superposición opaca -->
+    </div>
+    <div class="content">
+        <div class="text-container">
+            <h1>Leather Bomber Jacket</h1>
+            <div class="price">MXN$ 1,125</div>
+            <div class="countdown" id="countdown"></div>
+        </div>
+        <div class="image-container">
+            <img src="ROPA/ncoleccion/producto 1.png" alt="Imagen Principal">
+        </div>
+    </div>
+
+    <script>
+        // Script para el menú de hamburguesa
+        const hamburger = document.querySelector('.hamburger input');
+        const mobileNav = document.getElementById('mobile-nav');
+        const overlay = document.getElementById('overlay');
+
+        function toggleMenu() {
+            if (hamburger.checked) {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+            } else {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        }
+
+        hamburger.addEventListener('change', toggleMenu);
+        overlay.addEventListener('click', () => {
+            hamburger.checked = false;
+            toggleMenu();
+        });
+
+        // Script para la cuenta regresiva
+        const targetDate = new Date('2024-12-31T23:59:59');
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeDifference = targetDate - now;
+
+            if (timeDifference <= 0) {
+                document.getElementById('countdown').innerHTML = '¡La cuenta regresiva ha terminado!';
+                clearInterval(countdownInterval);
+                return;
+            }
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = 
+                `${days} días ${hours} horas ${minutes} minutos ${seconds} segundos`;
+        }
+
+        // Actualizar la cuenta regresiva cada segundo
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Actualizar la cuenta regresiva inmediatamente al cargar la página
+        updateCountdown();
+    </script>
+</body>
+</html>
+

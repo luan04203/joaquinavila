@@ -1,0 +1,392 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.secondary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: rgb(255, 255, 255);
+}
+
+.social-icons a {
+    margin: 0 8px;
+    text-decoration: none;
+    color: rgb(133, 133, 133);
+}
+
+.social-icons i {
+    font-size: 24px; /* Tamaño de los iconos sociales */
+    transition: opacity 0.3s ease;
+}
+
+.social-icons i:hover {
+    opacity: 0.7;
+}
+
+.phone-number {
+    font-size: 16px;
+}
+
+.phone-number a {
+    color: rgb(112, 112, 112);
+    text-decoration: none;
+}
+
+.phone-number a:hover {
+    text-decoration: underline;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff00;
+    color: rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #ddd;
+    position: relative; /* Necesario para posicionar el overlay correctamente */
+}
+
+.logo img {
+    height: 120px; /* Ajusta el tamaño del logo según sea necesario */
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: rgb(95, 95, 95);
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+.nav-menu a:hover {
+    text-decoration: underline;
+}
+
+.nav-menu i {
+    font-size: 20px; /* Tamaño del icono de carrito */
+}
+
+/* Estilos para el botón de hamburguesa */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger input {
+    display: none;
+}
+
+.hamburger svg {
+    height: 3em;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line {
+    fill: none;
+    stroke: rgb(110, 110, 110);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.line-top-bottom {
+    stroke-dasharray: 12 63;
+}
+
+.hamburger input:checked + svg {
+    transform: rotate(-45deg);
+}
+
+.hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+}
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px; /* Ajusta según el tamaño del encabezado */
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    border-bottom: 1px solid #444;
+}
+
+.mobile-nav a:hover {
+    background-color: #444;
+}
+
+.mobile-nav.active {
+    display: flex;
+    transform: translateY(0);
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Estilos para el nuevo botón de contacto */
+.btn-31,
+.btn-31 *,
+.btn-31 :after,
+.btn-31 :before,
+.btn-31:after,
+.btn-31:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-31 {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #000;
+  background-image: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+}
+
+.btn-31:disabled {
+  cursor: default;
+}
+
+.btn-31:-moz-focusring {
+  outline: auto;
+}
+
+.btn-31 svg {
+  display: block;
+  vertical-align: middle;
+}
+
+.btn-31 [hidden] {
+  display: none;
+}
+
+.btn-31 {
+  border-width: 1px;
+  padding: 1rem 2rem;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.btn-31:before {
+  --progress: 100%;
+  background: #fff;
+  -webkit-clip-path: polygon(
+    100% 0,
+    var(--progress) var(--progress),
+    0 100%,
+    100% 100%
+  );
+  clip-path: polygon(
+    100% 0,
+    var(--progress) var(--progress),
+    0 100%,
+    100% 100%
+  );
+  content: "";
+  inset: 0;
+  position: absolute;
+  transition: -webkit-clip-path 0.2s ease;
+  transition: clip-path 0.2s ease;
+  transition: clip-path 0.2s ease, -webkit-clip-path 0.2s ease;
+}
+
+.btn-31:hover:before {
+  --progress: 0%;
+}
+
+.btn-31 .text-container {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.btn-31 .text {
+  display: block;
+  font-weight: 900;
+  mix-blend-mode: difference;
+  position: relative;
+}
+
+.btn-31:hover .text {
+  -webkit-animation: move-up-alternate 0.3s ease forwards;
+  animation: move-up-alternate 0.3s ease forwards;
+}
+
+@-webkit-keyframes move-up-alternate {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(80%);
+  }
+
+  51% {
+    transform: translateY(-80%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes move-up-alternate {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(80%);
+  }
+
+  51% {
+    transform: translateY(-80%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+/* Estilos para la cuenta regresiva */
+.countdown {
+    font-size: 1.2em;
+    color: #fff;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.background {
+    position: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+    width: 100%;
+    height: 100%;
+    background-image: url('ROPA/ncoleccion/Diseño\ sin\ título\ \(4\).jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 1; /* Asegura que la imagen de fondo esté detrás del contenido */
+}
+
+.content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 1200px;
+    height: 100vh; /* Ajusta la altura del contenedor al 100% del viewport */
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1; /* Asegura que el contenido esté por encima del fondo y overlay */
+    
+    border-radius: 8px;
+}
+
+.text-container {
+    max-width: 400px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Evita que el texto se reduzca demasiado */
+}
+
+.text-container h1 {
+    margin: 0;
+    font-size: 2em;
+    color: #ffffff;
+}
+
+.text-container .price {
+    font-size: 1.5em;
+    color: #ffffffa8; /* Color del precio */
+}
+
+.text-container .countdown {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #fff; /* Asegura que el texto de la cuenta regresiva sea visible sobre el fondo */
+}
+
+.image-container {
+    flex: 1;
+    max-width: 400px; /* Limita el tamaño máximo de la imagen */
+    text-align: right;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+    transform: scale(1.1); /* Efecto de zoom suave */
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column; /* Coloca los elementos en columna para pantallas más pequeñas */
+        text-align: center;
+    }
+
+    .text-container {
+        margin-bottom: 20px;
+        max-width: 100%; /* Ajusta el ancho máximo en pantallas pequeñas */
+    }
+
+    .image-container {
+        max-width: 100%; /* Ajusta el tamaño máximo de la imagen en pantallas pequeñas */
+    }
+}
